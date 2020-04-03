@@ -13,7 +13,7 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
     libraryTarget: 'var',
-    library: 'Client'
+    library: 'Client',
   },
   devServer: {
     writeToDisk: true
@@ -35,6 +35,13 @@ module.exports = {
         use: [
           'file-loader',
         ],
+      },
+      {
+        test: /\.worker.js$/i,
+        exclude: /node_modules/,
+        use: [
+          'worker-loader'
+        ]
       },
     ]
   },
