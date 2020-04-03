@@ -2,9 +2,22 @@ var path = require('path');
 const express = require('express');
 const mockAPIResponse = require('./mockAPI.js');
 
+/**
+ * Require Express to run server and routes
+ */
 const app = express();
 
-app.use(express.static('dist'));
+/**
+ * Dependencies
+ */
+const bodyParser = require('body-parser');
+
+/**
+ * Middleware
+ * Here we are configuring express to use body-parser as middle-ware
+ */
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 /**
  * Cors for cross origin allowance
@@ -12,15 +25,29 @@ app.use(express.static('dist'));
 const cors = require('cors');
 app.use(cors());
 
+/**
+ * Initialize the main project folder
+ */
+app.use(express.static('dist'));
+
+/**
+ * Setup Server
+ */
+const port = 7000;
+
+function listening() {
+    console.log(`running on localhost: ${port}`);
+}
+
+/**
+ * Spin up the server
+ */
+app.listen(port, listening);
+
 console.log(__dirname);
 
 app.get('/', function (req, res) {
     res.sendFile('dist/index.html');
-});
-
-// designates what port the app will listen to for incoming requests
-app.listen(7000, function () {
-    console.log('Example app listening on port 7000!');
 });
 
 app.get('/test', function (req, res) {
