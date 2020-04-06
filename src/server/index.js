@@ -2,7 +2,7 @@ require('path');
 const express = require('express');
 const aylienTextAPI = require('aylien_textapi');
 const dotenv = require('dotenv');
-dotenv.config({path: './process.env'});
+dotenv.config({ path: './process.env' });
 
 /**
  * Require Express to run server and routes
@@ -58,18 +58,14 @@ function getInfo(request, response) {
     application_id: apiId,
     application_key: apiKey
   });
-  console.log('query is', request.query.text);
-  const sentiment = textapi.sentiment({
+  textapi.sentiment({
     'text': request.query.text,
-  }, function(error, response) {
+  }, function(error, apiResponse) {
     if (error === null) {
-      console.log(response);
+      console.log(`API response is: ${JSON.stringify(apiResponse)}`);
+      response.send(JSON.stringify(apiResponse));
     }
   });
-  // console.log('Response from server is', response);
-  console.log('Response code is', response.responseJson);
-  console.log('sentiment is', JSON.stringify(sentiment));
-  response.send(sentiment);
 }
 
 app.get('/info', getInfo);

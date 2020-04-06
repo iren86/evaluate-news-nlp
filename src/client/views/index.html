@@ -16,18 +16,29 @@
         <main>
             <section>
                 <form class="main_container">
-                    <input id="user_input" type="text" name="input" value="" placeholder="Name">
+                    <input id="user_input" type="text" name="input" placeholder="Name">
                     <button id="submit_button" type="button"> Generate</button>
                 </form>
             </section>
             <section>
-                <strong>Form Results:</strong>
-                <div id="results"></div>
+                <div id="app-data-block">
+                    <label for="app-data-block"><strong>Form Results:</strong></label>
+                    <div class="info-text" style="display: block;">
+                        Here will be your mood info according to your entry.
+                    </div>
+                    <div id="results" style="display: none;">
+                        <div id="entry">Your entry:
+                            <div class="entry-info"></div>
+                        </div>
+                        <div id="mood">Your mood:
+                            <div class="mood-info"></div>
+                        </div>
+                    </div>
+                </div>
             </section>
         </main>
         <footer>
             <p>This is a footer</p>
         </footer>
-        <script type="text/javascript" src="../../../dist/bundle.js"></script>
     </body>
 </html>
