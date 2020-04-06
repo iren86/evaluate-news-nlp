@@ -1,8 +1,15 @@
 require('http');
 import { stringify } from 'query-string';
 import logo from '../image/have_fun.png';
-import '../styles/common.scss';
-import '../styles/desktop.scss';
+import '../styles/base.scss';
+import '../styles/header.scss';
+import '../styles/main.scss';
+import '../styles/form.scss';
+import '../styles/footer.scss';
+import '../styles/header-desktop.scss';
+import '../styles/main-desktop.scss';
+import '../styles/form-desktop.scss';
+import '../styles/footer-desktop.scss';
 
 if (process.env.NODE_ENV !== 'production') {
   console.log('Looks like we are in development mode!');

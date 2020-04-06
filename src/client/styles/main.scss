@@ -1,0 +1,98 @@
+$primary-color: #1B7780;
+$secondary-color: #000;
+$shadow-color: #fff;
+$font-stack: 'Oswald', sans-serif;
+$primary-font-size: 1em;
+
+main {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr;
+  grid-auto-rows: auto auto 1fr;
+  grid-template-areas: "entry-data" "data-info" "footer";
+  background-color: $primary-color;
+  font-size: $primary-font-size;
+  font-family: $font-stack;
+  grid-gap: 2em;
+  width: 100%;
+  height: 100%;
+
+    section#user-entry-data-block {
+      grid-area: entry-data;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      background: #84ABAD;
+      border-radius: 3%;
+      box-shadow: 0 0 1em $shadow-color;
+      padding-top: 1em;
+      padding-bottom: 2em;
+    }
+
+    section#app-data-block {
+      grid-area: data-info;
+      display: flex;
+      flex-direction: column;
+      background: #84ABAD;
+      border-radius: 3%;
+      box-shadow: 0 0 1em $shadow-color;
+      padding-bottom: 2em;
+
+      label {
+        font-size: 1.5em;
+        margin-left: 1em;
+        margin-top: 1em;
+        color: $secondary-color;
+      }
+
+      .info-text {
+        font-size: $primary-font-size;
+        color: #fff;
+        text-align: left;
+        padding: 1em;
+        font-style: italic;
+      }
+
+      #results {
+        display: flex;
+        flex-direction: column;
+        margin-top: 1em;
+        margin-left: 1em;
+        color: #fff;
+
+        #entry {
+          display: flex;
+          flex-flow: row wrap;
+          justify-content: start;
+          padding-left: 0.5em;
+          margin-bottom: 1em;
+
+          .entry-info {
+            text-align: start;
+            padding-right: 0.5em;
+            margin-left: 1em;
+            font-family: $font-stack;
+            font-size: $primary-font-size;
+            font-style: italic;
+          }
+        }
+
+        #mood {
+          display: flex;
+          flex-flow: row wrap;
+          justify-content: start;
+          padding-left: 0.5em;
+          margin-bottom: 1em;
+
+          .mood-info {
+            text-align: start;
+            padding-right: 0.5em;
+            margin-left: 1em;
+            font-family: $font-stack;
+            font-size: $primary-font-size;
+            font-style: italic;
+          }
+        }
+      }
+    }
+  }

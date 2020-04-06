@@ -1,0 +1,9 @@
+@media screen and (min-device-width: 1281px) {
+  footer {
+    grid-area: footer;
+    display: flex;
+    flex-direction: row;
+    height: max-content;
+    background: #B5F6F9;
+  }
+}
