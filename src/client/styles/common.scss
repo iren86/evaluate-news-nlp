@@ -1,0 +1,200 @@
+$primary-color: #1B7780;
+$secondary-color: #000;
+$shadow-color: #fff;
+$font-stack: 'Oswald', sans-serif;
+$primary-font-size: 1em;
+
+body {
+  width: 98%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: $primary-color;
+}
+
+#app {
+  display: grid;
+  grid-auto-rows: auto;
+  grid-template-columns: 1fr;
+  grid-row-gap: 3em;
+  background-color: $primary-color;
+  font-size: $primary-font-size;
+  font-family: $font-stack;
+  place-items: center normal;
+  margin-left: 1em;
+}
+
+#user-entry-data-block {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  background: #84ABAD;
+  border-radius: 3%;
+  box-shadow: 0 0 1em $shadow-color;
+  padding-top: 1em;
+  padding-bottom: 2em;
+}
+
+#app-data-block {
+  display: flex;
+  flex-direction: column;
+  background: #84ABAD;
+  border-radius: 3%;
+  box-shadow: 0 0 1em $shadow-color;
+  padding-bottom: 2em;
+}
+
+#app-data-block > .info-text {
+  font-size: $primary-font-size;
+  color: #fff;
+  text-align: left;
+  padding: 1em;
+  font-style: italic;
+}
+
+#results {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1em;
+  margin-left: 1em;
+  color: #fff;
+}
+
+#entry {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: start;
+  padding-left: 0.5em;
+  margin-bottom: 1em;
+}
+
+.entry-info {
+  text-align: start;
+  padding-right: 0.5em;
+  margin-left: 1em;
+  font-family: $font-stack;
+  font-size: $primary-font-size;
+  font-style: italic;
+}
+
+#mood {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: start;
+  padding-left: 0.5em;
+  margin-bottom: 1em;
+}
+
+.mood-info {
+  text-align: start;
+  padding-right: 0.5em;
+  margin-left: 1em;
+  font-family: $font-stack;
+  font-size: $primary-font-size;
+  font-style: italic;
+}
+
+label {
+  font-size: 1.5em;
+  margin-left: 1em;
+  margin-top: 1em;
+  color: $secondary-color;
+}
+
+label > span.required-text {
+  font-size: 0.5em;
+  font-style: italic;
+}
+
+input {
+  display: block;
+  height: 3em;
+  width: 95%;
+  background: #B5F6F9;
+  color: $secondary-color;
+  font-size: $primary-font-size;
+  font-family: $font-stack;
+  padding: 0.2em;
+  margin-left: 1em;
+  margin-top: 0.5em;
+}
+
+button {
+  width: 95%;
+  height: 3em;
+  background: #B5F6F9;
+  color: $secondary-color;
+  font-size: 1.5em;
+  font-family: $font-stack;
+  border: none;
+  padding: 0.2em;
+  margin-left: 1em;
+  margin-top: 2em;
+  box-shadow: 0 0 0.5em $shadow-color;
+  border-radius: 0.5em;
+}
+
+.header.box {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  padding: 2em;
+
+}
+
+.header.box > img {
+  width: 12em;
+  height: 12em;
+  padding: 0;
+  margin: 0;
+}
+
+.header.box > h1 {
+  font-size: 3em;
+  width: auto;
+  background-color: $primary-color;
+  color: $secondary-color;
+  font-weight: bold;
+  font-style: italic;
+  margin: 0;
+  padding: 1em;
+  text-align: center;
+  align-content: center;
+  align-self: center;
+}
+
+/* Reset style for HTML element on active to have no border*/
+input:focus,
+button:focus {
+  outline: none;
+}
+
+button:hover {
+  background-color: #F2C04D;
+}
+
+button::-moz-focus-inner{
+  border: 0;
+}
+
+/* Style for Placeholder Text*/
+::placeholder { /* Firefox, Chrome, Opera */
+  color: #808080;
+  font-family: $font-stack;
+  font-size: $primary-font-size;
+  font-style: italic;
+
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: $secondary-color;
+  font-family: $font-stack;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: $secondary-color;
+  font-family: $font-stack;
+
+}
+

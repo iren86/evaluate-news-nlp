@@ -2,43 +2,38 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title>Test</title>
+        <title>Recognize Fillings App</title>
     </head>
     <body>
-        <header>
-            <div class="">
-                Logo
-            </div>
-            <div class="">
-                navigation
-            </div>
-        </header>
-        <main>
-            <section>
-                <form class="main_container">
-                    <input id="user_input" type="text" name="input" placeholder="Name">
-                    <button id="submit_button" type="button"> Generate</button>
-                </form>
-            </section>
-            <section>
+        <div class="header box">
+            <img id="logo">
+            <h1 class="title">
+                Get Know Your Today's Mood
+            </h1>
+        </div>
+        <div id="app">
+                <div id="user-entry-data-block">
+                    <div class="main_container">
+                        <label for="user_input">Enter your feelings here <span
+                                class="required-text">(required)</span></label>
+                        <input id="user_input" type="text" name="input" placeholder="enter text here">
+                        <button id="submit_button" type="button"> Generate</button>
+                    </div>
+                </div>
                 <div id="app-data-block">
-                    <label for="app-data-block"><strong>Form Results:</strong></label>
+                    <label for="app-data-block">Your Result:</label>
                     <div class="info-text" style="display: block;">
                         Here will be your mood info according to your entry.
                     </div>
                     <div id="results" style="display: none;">
-                        <div id="entry">Your entry:
-                            <div class="entry-info"></div>
-                        </div>
                         <div id="mood">Your mood:
                             <div class="mood-info"></div>
                         </div>
+                        <div id="entry">Your entry:
+                            <div class="entry-info"></div>
+                        </div>
                     </div>
                 </div>
-            </section>
-        </main>
-        <footer>
-            <p>This is a footer</p>
-        </footer>
+        </div>
     </body>
 </html>

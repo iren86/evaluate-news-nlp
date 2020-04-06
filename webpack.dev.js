@@ -8,7 +8,7 @@ const DashboardPlugin = require('webpack-dashboard/plugin');
 module.exports = {
   mode: 'development',
   devtool: 'inline-source-map',
-  entry: './src/client/index.js',
+  entry: './src/client/js/index.js',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
@@ -24,17 +24,15 @@ module.exports = {
       {
         test: '/\.js$/',
         exclude: /node_modules/,
-        loader: ['babel-loader', "source-map-loader"]
+        loader: ['babel-loader', 'source-map-loader']
       },
       {
         test: /\.scss$/,
-        use: [ 'style-loader', 'css-loader', 'sass-loader' ]
+        use: ['style-loader', 'css-loader', 'sass-loader']
       },
       {
-        test: /\.(png|svg|jpg|gif)$/,
-        use: [
-          'file-loader',
-        ],
+        test: /\.png$/,
+        loader: 'url-loader?mimetype=image/png'
       },
       {
         test: /\.worker.js$/i,

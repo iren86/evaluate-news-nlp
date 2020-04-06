@@ -1,10 +1,8 @@
-const http = require('http');
+require('http');
 import { stringify } from 'query-string';
-import './styles/base.scss';
-import './styles/footer.scss';
-import './styles/form.scss';
-import './styles/header.scss';
-import './styles/resets.scss';
+import logo from '../image/have_fun.png';
+import '../styles/common.scss';
+import '../styles/desktop.scss';
 
 if (process.env.NODE_ENV !== 'production') {
   console.log('Looks like we are in development mode!');
@@ -21,6 +19,9 @@ if ('serviceWorker' in navigator) {
 } else {
   console.log('CLIENT: service worker is not supported.');
 }
+
+const logoImg = document.querySelector('#logo');
+logoImg.src = logo;
 
 /**
  * Function to get element context
@@ -51,7 +52,7 @@ const onFormSubmitListener = async (e) => {
   } else {
     console.log('else block');
     hideData(resultEl);
-    infoEl.textContent = `Please fill all required fields`;
+    infoEl.textContent = `Please fill required field`;
     infoEl.setAttribute('style', 'color: red;');
     showData(infoEl);
   }
