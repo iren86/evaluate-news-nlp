@@ -1,6 +1,8 @@
-var path = require('path');
+require('path');
 const express = require('express');
-const mockAPIResponse = require('./mockAPI.js');
+const aylienTextAPI = require('aylien_textapi');
+const dotenv = require('dotenv');
+dotenv.config({path: './process.env'});
 
 /**
  * Require Express to run server and routes
@@ -35,21 +37,39 @@ app.use(express.static('dist'));
  */
 const port = 7000;
 
-function listening() {
-    console.log(`running on localhost: ${port}`);
-}
-
 /**
  * Spin up the server
  */
 app.listen(port, listening);
 
-console.log(__dirname);
+function listening() {
+  console.log(`running on localhost: ${port}`);
+}
 
-app.get('/', function (req, res) {
-    res.sendFile('dist/index.html');
-});
+/**
+ * GET info from API
+ */
+function getInfo(request, response) {
+  // Read API_ID and API_KEY from the environment
+  const apiId = process.env.API_ID;
+  const apiKey = process.env.API_KEY;
 
-app.get('/test', function (req, res) {
-    res.send(mockAPIResponse);
-});
+  const textapi = new aylienTextAPI({
+    application_id: apiId,
+    application_key: apiKey
+  });
+  console.log('query is', request.query.text);
+  const sentiment = textapi.sentiment({
+    'text': request.query.text,
+  }, function(error, response) {
+    if (error === null) {
+      console.log(response);
+    }
+  });
+  // console.log('Response from server is', response);
+  console.log('Response code is', response.responseJson);
+  console.log('sentiment is', JSON.stringify(sentiment));
+  response.send(sentiment);
+}
+
+app.get('/info', getInfo);
