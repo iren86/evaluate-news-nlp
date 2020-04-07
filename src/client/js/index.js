@@ -15,16 +15,14 @@ if (process.env.NODE_ENV !== 'production') {
   console.log('Looks like we are in development mode!');
 }
 
-// ServiceWorker is a progressive technology. Ignore unsupported browsers
 if ('serviceWorker' in navigator) {
-  console.log('CLIENT: service worker registration in progress.');
-  navigator.serviceWorker.register('../../worker.js').then(function () {
-    console.log('CLIENT: service worker registration complete.');
-  }, function () {
-    console.log('CLIENT: service worker registration failure.');
+  navigator.serviceWorker.register('../../worker.js').then(function(registration) {
+    // Registration was successful
+    console.log('ServiceWorker registration successful with scope: ',    registration.scope);
+  }).catch(function(err) {
+    // registration failed :(
+    console.log('ServiceWorker registration failed: ', err);
   });
-} else {
-  console.log('CLIENT: service worker is not supported.');
 }
 
 const logoImg = document.querySelector('#logo');
@@ -57,7 +55,6 @@ const onFormSubmitListener = async (e) => {
     hideData(infoEl);
     showData(resultEl);
   } else {
-    console.log('else block');
     hideData(resultEl);
     infoEl.textContent = `Please fill required field`;
     infoEl.setAttribute('style', 'color: red;');
@@ -75,12 +72,14 @@ document.querySelector('#submit_button').addEventListener('click', onFormSubmitL
  */
 const getInfo = async (user_input) => {
   const params = { text: user_input };
-  const request = await fetch(`/info?${stringify(params)}`);
+  const request = await fetch(`http://localhost:7000/info?${stringify(params)}`);
   try {
     const data = await request.json();
-    console.log(`Data stringify is: ${JSON.stringify(data)}`);
+    console.log(`All data is: ${JSON.stringify(data)}`);
     const userEntry = JSON.stringify(data.text);
+    console.log(`User's input is: ${JSON.stringify(data.text)}`);
     const moodInfo = JSON.stringify(data.polarity);
+    console.log(`Polarity is: ${JSON.stringify(data.polarity)}`);
     document.querySelector('.entry-info').innerHTML = userEntry;
     document.querySelector('.mood-info').innerHTML = moodInfo;
   } catch (error) {
@@ -118,10 +117,8 @@ const validateInput = () => {
  */
 const getRequiredFlag = () => {
   if (userEntryEl.classList.contains(validClassName)) {
-    console.log(`validClassName ${validClassName}`);
     return validClassName;
   } else {
-    console.log(`validClassName ${invalidClassName}`);
     return invalidClassName;
   }
 };
@@ -131,7 +128,6 @@ const getRequiredFlag = () => {
  */
 const isFieldValid = () => {
   const flag = getRequiredFlag();
-  console.log(`getRequiredFlag ${flag}`);
   return flag === validClassName;
 };
 
